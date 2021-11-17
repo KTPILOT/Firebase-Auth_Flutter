@@ -15,7 +15,7 @@ class AuthService {
     required String name,
     required String date,
     required String email,
-    required String password,}
+    required String password}
   ) async {
 
     try {
@@ -24,7 +24,7 @@ class AuthService {
         password: password,
       );
       user = userCredential.user;
-      await user!.updateProfile();
+      user!.updateDisplayName(name);
       await user!.reload();
       user = auth.currentUser;
     } on FirebaseAuthException catch (e) {

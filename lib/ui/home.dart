@@ -85,23 +85,21 @@ class _HomeState extends State<Home> {
       color: Colors.lightBlue.shade200,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
-        padding: const EdgeInsets.only(left: 20 ,right: 20),
+        padding: const EdgeInsets.only(left: 20 ,right: 20, top: 20),
            child: StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection('userCollection').snapshots(),
       builder: (context, snapshot) {
         if(AuthService().auth.currentUser == null){
-          return const Center(
-            child: Text("Please Login", style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.w600
-            ),),
-          );
+          return const Text("Please Login", style: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.w600
+          ),);
         }
         else {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('User Name : ${AuthService().auth
-                  .currentUser!.displayName} ',
+                  .currentUser!.displayName}',
                   style: const TextStyle(fontSize: 20)),
               const SizedBox(height: 10),
               Text("User Email ID : ${ AuthService().auth

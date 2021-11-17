@@ -26,7 +26,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
 
   final userRef = FirebaseFirestore.instance.collection('userCollection');
-  //
+
   // TextEditingController email = TextEditingController();
   // TextEditingController name = TextEditingController();
   // TextEditingController password = TextEditingController();
@@ -173,7 +173,8 @@ class _RegisterState extends State<Register> {
                           // await AuthService.update(name: name.text,
                           //     date: dateController.text,
                           //     email: email.text, password: password.text);
-
+                          await AuthService().auth.currentUser!.updateDisplayName(name.text);
+                          await AuthService().auth.currentUser!.updateEmail(email.text);
                           DefaultTabController.of(context)!.animateTo(2);
 
                           // Navigator.pushReplacement(
