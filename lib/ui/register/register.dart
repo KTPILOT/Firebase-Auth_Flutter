@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_demo/auth/authenticate.dart';
 import 'package:flutter_firebase_demo/model/user_model.dart';
 import 'package:flutter_firebase_demo/ui/data.dart';
+import 'package:provider/provider.dart';
+
+import '../theme.dart';
 
 
 TextEditingController email = TextEditingController();
@@ -56,7 +59,7 @@ class _RegisterState extends State<Register> {
             height: MediaQuery.of(context).size.height * 0.58,
             width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
-              color: Colors.lightBlue.shade200,
+              color:ThemeType.DARK == Provider.of<ThemeState>(context).theme ? Colors.grey[700] : Colors.lightBlue.shade200,
               borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),

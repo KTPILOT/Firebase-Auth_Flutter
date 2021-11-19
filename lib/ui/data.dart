@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_demo/auth/authenticate.dart';
-import 'package:flutter_firebase_demo/model/user_model.dart';
 import 'package:flutter_firebase_demo/ui/register/register.dart';
+import 'package:flutter_firebase_demo/ui/theme.dart';
+import 'package:provider/provider.dart';
 
 
 String id ='';
@@ -29,7 +30,7 @@ class _DataState extends State<Data> {
                   height: MediaQuery.of(context).size.height * 0.75,
                   margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue.shade200,
+                    color: ThemeType.DARK == Provider.of<ThemeState>(context).theme ? Colors.grey[700] : Colors.lightBlue.shade200,
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
                   padding: const EdgeInsets.only(

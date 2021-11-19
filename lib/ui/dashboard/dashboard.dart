@@ -4,6 +4,9 @@ import 'package:flutter_firebase_demo/ui/data.dart';
 import 'package:flutter_firebase_demo/ui/home.dart';
 import 'package:flutter_firebase_demo/ui/login.dart';
 import 'package:flutter_firebase_demo/ui/register/register.dart';
+import 'package:flutter_firebase_demo/ui/setting.dart';
+import 'package:flutter_firebase_demo/ui/theme.dart';
+import 'package:provider/provider.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen(this.indexSelected, {Key? key,required this.isRegistration}) : super(key: key);
@@ -11,11 +14,21 @@ class DashBoardScreen extends StatefulWidget {
   final bool? isRegistration;
   final int indexSelected;
 
+  Future<void> onGoBack() async{
+    return;
+  }
+
   @override
   _DashBoardScreenState createState() => _DashBoardScreenState();
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
+
+  // Future<void> onGoBack() async {
+  //     setState(() {
+  //       Provider.of<ThemeState>(context, listen: false).theme == ThemeType.LIGHT ? ThemeType.LIGHT :ThemeType.DARK;
+  //     });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +48,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   Tab(icon: Icon(Icons.people)),
                   Tab(icon: Icon(Icons.home)),
                 ]),
+            actions: [IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder:(context) => const Setting(),));
+            }, icon: Icon(Icons.settings))],
           ),
           body:   TabBarView(
             children: [ const Login(), registration == true ? const Register(flag: 0) :

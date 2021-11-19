@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_demo/auth/authenticate.dart';
 import 'package:flutter_firebase_demo/main.dart';
+import 'package:flutter_firebase_demo/ui/theme.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
  const Login({Key? key}) : super(key: key);
@@ -33,7 +35,7 @@ class _LoginState extends State<Login> {
           height: MediaQuery.of(context).size.height * 0.34,
           width: MediaQuery.of(context).size.width * 0.9,
           decoration: BoxDecoration(
-            color: Colors.lightBlue.shade200,
+            color: ThemeType.DARK == Provider.of<ThemeState>(context).theme ? Colors.grey[700] : Colors.lightBlue.shade200,
             borderRadius: const BorderRadius.all(Radius.circular(20)),
           ),
           padding:const  EdgeInsets.only(top: 20, bottom: 30, left: 20, right: 20),
